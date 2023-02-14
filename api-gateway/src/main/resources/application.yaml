@@ -1,0 +1,32 @@
+server:
+  port: 8090
+
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: hello
+          uri: lb://eclient
+          predicates:
+            - Path=/test/**
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+
+
+# url, куда будет происходить регистрация микросервисов
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka
+
+
+# более короткое отображение логов
+logging:
+  pattern:
+    console: '%C{1.} [%-5level] %d{HH:mm:ss} - %msg%n'
+
