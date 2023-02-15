@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+#secret config
+github-config-server/src/main/resources/application-secret.properties
